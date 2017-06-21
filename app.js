@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
-var keys = require('./keys.js');
+var keys = require('./keys');
 var path = require('path')
+
 
 var Flickr = require("flickrapi"),
     flickrOptions = {
@@ -18,9 +19,10 @@ app.set('port', (process.env.PORT || 3000));
 
 app.use('/',express.static(path.join(__dirname,'public')));
 
+var searchResults =[];
 
 app.post('/', (req,res) => {
-  var searchString = Object.keys(req.body)[0]
+  var searchString = 'cheese'
   console.log('Recieved POST with request body :', searchString);
   var searchResult = [];
   //make a flickr call

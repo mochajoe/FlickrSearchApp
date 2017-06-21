@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var keys = require('./keys.js');
+var path = require('path')
 
 var Flickr = require("flickrapi"),
     flickrOptions = {
@@ -12,7 +13,6 @@ var Flickr = require("flickrapi"),
     var PHOTO_SIZE = 'q';
 
 app.set('port', (process.env.PORT || 3000));
-
 
 
 

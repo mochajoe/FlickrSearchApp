@@ -1,16 +1,23 @@
 var express = require('express');
 var app = express();
+var keys = require('./keys.js');
 
 var Flickr = require("flickrapi"),
     flickrOptions = {
-      api_key: "",
-      secret: ""
+      api_key: keys.key,
+      secret: keys.secret
     };
 
     var RESULTS_TO_DISPLAY = 32;
     var PHOTO_SIZE = 'q';
 
 app.set('port', (process.env.PORT || 3000));
+
+
+
+
+app.use('/',express.static(path.join(__dirname,'public')));
+
 
 app.post('/', (req,res) => {
   var searchString = Object.keys(req.body)[0]

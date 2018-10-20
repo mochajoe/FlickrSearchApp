@@ -22,14 +22,14 @@ app.use('/',express.static(path.join(__dirname,'public')));
 var searchResults =[];
 
 app.post('/', (req,res) => {
-  var searchString = 'cheese'
+  var searchString = 'apple'
   console.log('Recieved POST with request body :', searchString);
   var searchResult = [];
   //make a flickr call
   Flickr.tokenOnly(flickrOptions,(error,flickr) => {
     flickr.photos.search({
       text:searchString,
-      page:1,
+      page:2,
       per_page: RESULTS_TO_DISPLAY
     }, function(err,result) {
       if (err) {

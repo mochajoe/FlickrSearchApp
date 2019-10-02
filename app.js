@@ -1,10 +1,10 @@
-var express = require('express');
-var app = express();
-var keys = require('./keys');
-var path = require('path')
+const express = require('express');
+const app = express();
+const keys = require('./keys');
+const path = require('path')
 
 
-var Flickr = require("flickrapi"),
+const Flickr = require("flickrapi"),
     flickrOptions = {
       api_key: keys.key,
       secret: keys.secret
@@ -19,7 +19,7 @@ app.set('port', (process.env.PORT || 3000));
 
 app.use('/',express.static(path.join(__dirname,'public')));
 
-var searchResults =[];
+let searchResults =[];
 
 app.post('/', (req,res) => {
   var searchString = 'cheese'

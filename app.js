@@ -35,13 +35,16 @@ app.post('/', (req,res) => {
       if (err) {
         throw new Error(err)
       }
+      
+        
+       const searchResults = RESULTS_TO_DISPLAY.map(res=>
+                                                    {
+       const currentPhoto = result.photos.photo[i];
+           const url = `https://farm${result.photos.photo[i].farm}.staticflickr.com/${result.photos.photo[i].server}/${result.photos.photo[i].id}_${result.photos.photo[i].secret}`;
 
-      for (var i=0;i<RESULTS_TO_DISPLAY;i++) {
-        var currentPhoto = result.photos.photo[i];
-        var url = `https://farm${result.photos.photo[i].farm}.staticflickr.com/${result.photos.photo[i].server}/${result.photos.photo[i].id}_${result.photos.photo[i].secret}`;
-
-        searchResults.push(url);
-      }
+       return url
+       }                         
+  
       res.end(JSON.stringify(searchResults), 201);
     });
   });
